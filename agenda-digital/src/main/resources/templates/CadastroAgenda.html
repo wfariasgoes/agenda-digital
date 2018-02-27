@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<title>Cadastro de Contato</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> <label>Everis</label>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<form class="form-horizontal">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1 class="panel-title">Novo cadastro</h1>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="nome" class="col-sm-2 control-label">Nome</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="nome" />
+				</div>
+				<label for="email" class="col-sm-1 control-label">Email</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="email" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="estado" class="col-sm-2 control-label">Estado</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="estado" name="estado">
+						<option></option>
+					</select>
+				</div>
+				<label for="cidade" class="col-sm-3 control-label">Cidade</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="cidade" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="cep" class="col-sm-2 control-label">Cep</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control js-currency" id="cep" />
+				</div>
+				<label for="valor" class="col-sm-3 control-label">Bairro</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control js-currency" id="bairro" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="tipo" class="col-sm-2 control-label">Tipo Logradouro</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="tipo" name="tipo">
+						<option>Aveninda</option>
+						<option>Rua</option>
+						<option>Travessa</option>
+						<option>Beco</option>
+					</select>
+				</div>
+			
+			</div>
+			
+			<div class="form-group">
+				
+				<label for="logradouro" class="col-sm-2 control-label">Endereço</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control js-currency" id="logradouro" />
+				</div>
+				<label for="complemento" class="col-sm-1 control-label">Complemento</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="complemento" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+			<label for="valor" class="col-sm-2 control-label">Número</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control js-currency" id="bairro" />
+				</div>
+				<label for="phone" class="col-sm-3 control-label">Telefone</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control js-currency" id="phone" />
+				</div>
+			</div>
+			 
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-success">Salvar</button>
+				</div>
+			</div>
+
+		</div>
+
+	</form>
+	<script src="bootstrap.min.js"></script>
+</body>
+</html>
