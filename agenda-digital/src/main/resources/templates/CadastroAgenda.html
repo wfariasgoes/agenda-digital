@@ -16,21 +16,21 @@
 		</div>
 	</nav>
 
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="POST" action="/agendas">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h1 class="panel-title">Novo cadastro</h1>
 			</div>
-		</div>
-		<div class="panel-body">
+			
+			<div class="panel-body">
 			<div class="form-group">
 				<label for="nome" class="col-sm-2 control-label">Nome</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="nome" />
+					<input type="text" class="form-control" id="nome" name="nome"/>
 				</div>
 				<label for="email" class="col-sm-1 control-label">Email</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="email" />
+					<input type="text" class="form-control" id="email" name="email"/>
 				</div>
 			</div>
 			
@@ -38,23 +38,45 @@
 				<label for="estado" class="col-sm-2 control-label">Estado</label>
 				<div class="col-sm-2">
 					<select class="form-control" id="estado" name="estado">
-						<option></option>
+						<option value="RO">RO</option>
+						<option value="AC">AC</option>
+						<option value="AM">AM</option>
+						<option value="PA">PA</option>
+						<option value="MA">MA</option>
+						<option value="CE">CE</option>
+						<option value="RN">RN</option>
+						<option value="PB">PB</option>
+						<option value="PE">PE</option>
+						<option value="AL">AL</option>
+						<option value="SE">SE</option>
+						<option value="BA">BA</option>
+						<option value="MG">MG</option>
+						<option value="ES">ES</option>
+						<option value="RJ">RJ</option>
+						<option value="SP">SP</option>
+						<option value="PR">PR</option>
+						<option value="SC">SC</option>
+						<option value="RS">RS</option>
+						<option value="MS">MS</option>
+						<option value="MT">MT</option>
+						<option value="GO">GO</option>
+						<option value="DF">DF</option>
 					</select>
 				</div>
 				<label for="cidade" class="col-sm-3 control-label">Cidade</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="cidade" />
+					<input type="text" class="form-control" id="cidade" name="cidade"/>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="cep" class="col-sm-2 control-label">Cep</label>
 				<div class="col-sm-2">
-					<input type="text" class="form-control js-currency" id="cep" />
+					<input type="text" class="form-control js-currency" id="cep" name="cep"/>
 				</div>
-				<label for="valor" class="col-sm-3 control-label">Bairro</label>
+				<label for="bairro" class="col-sm-3 control-label">Bairro</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control js-currency" id="bairro" />
+					<input type="text" class="form-control js-currency" id="bairro" name="bairro"/>
 				</div>
 			</div>
 
@@ -62,10 +84,10 @@
 				<label for="tipo" class="col-sm-2 control-label">Tipo Logradouro</label>
 				<div class="col-sm-2">
 					<select class="form-control" id="tipo" name="tipo">
-						<option>Aveninda</option>
-						<option>Rua</option>
-						<option>Travessa</option>
-						<option>Beco</option>
+						<option value="LOGRADOURO">Aveninda</option>
+						<option value="RUA">Rua</option>
+						<option value="TRAVESSA">Travessa</option>
+						<option value="BECO">Beco</option>
 					</select>
 				</div>
 			
@@ -96,12 +118,12 @@
 			 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-success">Salvar</button>
+					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
 			</div>
 
 		</div>
-
+		</div>
 	</form>
 	<script src="bootstrap.min.js"></script>
 </body>
