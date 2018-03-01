@@ -2,47 +2,39 @@ package com.everis.agendadigital.model;
 
 public enum Estados {
 
-	RO(11,"RO"),
-	AC(12,"AC"),
-	AM(13,"AM"),
-	PA(15,"PA"),
-	MA(21,"MA"),
-	CE(23,"CE"),
-	RN(24,"RN"),
-	PB(25,"PB"),
-	PE(26,"PE"),
-	AL(27,"AL"),
-	SE(28,"SE"),
-	BA(29,"BA"),
-	MG(31,"MG"),
-	ES(32,"ES"),
-	RJ(33,"RJ"),
-	SP(35,"SP"),
-	PR(41,"PR"),
-	SC(42,"SC"),
-	RS(43,"RS"),
-	MS(50,"MS"),
-	MT(51,"MT"),
-	GO(52,"GO"),
-	DF(53,"DF");
+	RO("RO"),
+	AC("AC"),
+	AM("AM"),
+	PA("PA"),
+	MA("MA"),
+	CE("CE"),
+	RN("RN"),
+	PB("PB"),
+	PE("PE"),
+	AL("AL"),
+	SE("SE"),
+	BA("BA"),
+	MG("MG"),
+	ES("ES"),
+	RJ("RJ"),
+	SP("SP"),
+	PR("PR"),
+	SC("SC"),
+	RS("RS"),
+	MS("MS"),
+	MT("MT"),
+	GO("GO"),
+	DF("DF");
 
-	private final int codigoIbge;
-	private final String nome;
+	private String estado;
 
-	private Estados(int codigoIbge,String nome) {
-		this.codigoIbge = codigoIbge;
-		this.nome = nome;
+	private Estados(String estado) {
+		this.estado = estado;
 	}
 	
-	public String getCodigo() {
-		return Integer.toString(codigoIbge);
+	public String getEstado() {
+		return estado;
 	}
-	
-	public String getNome(){
-		return nome;
-	}
-	
-	public int getCodigoIbge(){
-		return codigoIbge;
-	}
+ 	
+	 
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8" />
+	<title>Cobrança</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.min.css" />
+	
+</head>
+<body>
+	
+	<header layout:include="/padrao/Cabecalho"></header>
+	
+	
+	<section layout:fragment="content" >
+      <p>Text Template</p>
+    </section>   
+
+	<aside class="aw-sidebar  js-sidebar">
+		<ui:include layout:include="/padrao/Menu" />
+	</aside>
+	
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-datepicker.min.js"></script>
+	<script src="/js/bootstrap-datepicker.pt-BR.min.js"></script>
+	<script src="/js/jquery.maskMoney.min.js"></script>
+	<script src="/js/cobranca.js"></script>
+</body>
+</html>

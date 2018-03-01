@@ -1,6 +1,7 @@
 package com.everis.agendadigital.model;
 
 public enum TipoLogradouro {
+	ESTRDA("Estrada"),
 	RUA("Rua"),
 	LOGRADOURO("Avenida"), 
 	TRAVESSA("Travessa"),

@@ -6,6 +6,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Agenda {
@@ -15,16 +18,27 @@ public class Agenda {
 	private Long codigo;
 	private String nome;
 	private String email;
+	
 	@Enumerated(EnumType.STRING)
 	private Estados estado;
+	
 	private String cidade; 
 	private String cep; 
 	private String bairro;
+	
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
 	@Enumerated(EnumType.STRING)
 	private TipoLogradouro tipoLogradouro;
+	
 	private String logradouro;
 	private String complemento;
 	private int numero;
+	private String telefone;
 	
 	public String getNome() {
 		return nome;
@@ -85,6 +99,12 @@ public class Agenda {
 	}
 	public void setNumero(int numero) {
 		this.numero = numero;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	@Override
 	public int hashCode() {
