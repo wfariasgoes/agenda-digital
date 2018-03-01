@@ -3,8 +3,9 @@
 }
 
 .panel-default{
-	margin-left: 225px;
-	margin-right: 15px;
+	margin-left: 175px;
+	margin-right: 10px;
+	font-size: 12px;
 }
 
 .panel-warning{
@@ -42,13 +43,17 @@
 	padding: 0px;
 }
 
+.form-group{
+	font-size: 12px;
+}
+
 /* SIDEBAR */
 .aw-sidebar {
 	position: fixed;
 	top: 120px;
 	bottom: 0;
 	left: 0;
-	width: 210px;
+	width: 165px;
 	margin-left: 11px;
 	z-index: 9998;
 	transition: margin-left 0.5s;

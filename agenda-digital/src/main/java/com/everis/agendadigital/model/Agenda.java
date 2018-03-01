@@ -6,9 +6,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Pattern;
 
-import org.springframework.format.annotation.NumberFormat;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 public class Agenda {
@@ -16,15 +16,37 @@ public class Agenda {
 	@Id      //tipo IDENTITY deixa o banco de dados tomar conta de como será gerado o id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private Long codigo;
+	
+	@NotEmpty(message = "Nome é obrigatório")
 	private String nome;
+	
+	@NotEmpty(message = "Email é obrigatório")
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
 	private Estados estado;
 	
+	@NotEmpty(message = "Cidade é obrigatório")
 	private String cidade; 
+	
+	@NotEmpty(message = "Cep é obrigatório")
 	private String cep; 
+	
+	@NotEmpty(message = "Bairro é obrigatório")
 	private String bairro;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoLogradouro tipoLogradouro;
+	
+	@NotEmpty(message = "Rua é obrigatório")
+	private String logradouro;
+	
+	private String complemento;
+	
+	private String numero;
+	
+	@NotEmpty(message = "Telefone é obrigatório")
+	private String telefone;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -32,13 +54,6 @@ public class Agenda {
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	@Enumerated(EnumType.STRING)
-	private TipoLogradouro tipoLogradouro;
-	
-	private String logradouro;
-	private String complemento;
-	private int numero;
-	private String telefone;
 	
 	public String getNome() {
 		return nome;
@@ -67,7 +82,7 @@ public class Agenda {
 	public String getComplemento() {
 		return complemento;
 	}
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 	public void setNome(String nome) {
@@ -97,7 +112,7 @@ public class Agenda {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	public String getTelefone() {

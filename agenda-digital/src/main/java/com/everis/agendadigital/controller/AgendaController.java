@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,13 +21,16 @@ import com.everis.agendadigital.repository.AgendaRepositoty;
 @Controller
 @RequestMapping("/agendas")
 public class AgendaController {
-
+	//para log Debug (logging.level.root=DEBUG)
+	
+	private static final String CADASTRO_VIEW = "CadastroAgenda";
 	@Autowired
 	private AgendaRepositoty agendaRepositoty;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(){
 		ModelAndView mv = new ModelAndView("CadastroAgenda");
+		mv.addObject(new Agenda());
 		return mv;
 	}
 	
@@ -35,11 +40,15 @@ public class AgendaController {
 	 * Com ModelAndView
 	 * **/
 	@RequestMapping(method =  RequestMethod.POST)
-	public ModelAndView salvar(Agenda agenda){
-		System.out.println(">>>> "+agenda.getNome()+" -- "+agenda.getTipoLogradouro());
+	public ModelAndView salvar(@Validated Agenda agenda, Errors erros){
+		
+		ModelAndView mv = new ModelAndView("CadastroAgenda");
+		if(erros.hasErrors()){
+			return mv;
+		}
 		
 		agendaRepositoty.save(agenda);
-		ModelAndView mv = new ModelAndView("CadastroAgenda");
+		
 		mv.addObject("mensagem", "Agenda salva com sucesso!");
 		return mv;
 	}
