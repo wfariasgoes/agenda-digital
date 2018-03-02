@@ -41,12 +41,17 @@ public class Agenda {
 	@NotEmpty(message = "Rua é obrigatório")
 	private String logradouro;
 	
+	@NotEmpty(message = "Serviços é obrigatório")
+	private String servico;
+	
 	private String complemento;
 	
 	private String numero;
 	
 	@NotEmpty(message = "Telefone é obrigatório")
 	private String telefone;
+	
+	
 	
 	public Long getCodigo() {
 		return codigo;
@@ -120,6 +125,12 @@ public class Agenda {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public String getServico() {
+		return servico;
+	}
+	public void setServico(String servicos) {
+		this.servico = servicos;
 	}
 	@Override
 	public int hashCode() {

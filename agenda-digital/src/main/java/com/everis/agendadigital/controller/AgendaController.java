@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.everis.agendadigital.model.Agenda;
 import com.everis.agendadigital.model.Estados;
@@ -40,17 +42,13 @@ public class AgendaController {
 	 * Com ModelAndView
 	 * **/
 	@RequestMapping(method =  RequestMethod.POST)
-	public ModelAndView salvar(@Validated Agenda agenda, Errors erros){
-		
-		ModelAndView mv = new ModelAndView("CadastroAgenda");
+	public String salvar(@Validated Agenda agenda, Errors erros, RedirectAttributes attributes){
 		if(erros.hasErrors()){
-			return mv;
+			return "CadastroAgenda";
 		}
-		
 		agendaRepositoty.save(agenda);
-		
-		mv.addObject("mensagem", "Agenda salva com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Agenda salva com sucesso!");
+		return "redirect:/agendas/novo";
 	}
 	
 	/**
@@ -71,6 +69,15 @@ public class AgendaController {
 		// lista de titulos
 		ModelAndView mv = new ModelAndView("PesquisaContato");
 		mv.addObject("contatos", todosContatos);
+		return mv;
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicaor(@PathVariable Long codigo){
+		Agenda agenda = agendaRepositoty.findOne(codigo);
+		
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		mv.addObject(agenda);
 		return mv;
 	}
 	
