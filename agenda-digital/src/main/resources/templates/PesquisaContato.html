@@ -62,9 +62,7 @@
 						<td class="text-center" th:text="${agenda.telefone}">
 							<span class="bfh-phone" data-format="+55 (dd) dddd-dddd" data-number="15555555555"></span>
 						</td>
-						<td class="text-center">
-							<span class="label label-primary">Serviços</span>
-						</td>
+						<td class="text-center" th:text="${agenda.servico}"></td>
 						<td class="text-center">
 							<a class="btn btn-link btn-xs"
 								th:href="@{/agendas/{codigo}(codigo=${agenda.codigo})}" title="Editar" rel="tooltip" data-placement="top"> 

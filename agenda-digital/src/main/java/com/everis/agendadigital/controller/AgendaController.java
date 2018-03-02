@@ -31,9 +31,6 @@ public class AgendaController {
 	private static final String CADASTRO_VIEW = "CadastroAgenda";
 	
 	@Autowired
-	private AgendaRepositoty agendaRepositoty;
-	
-	@Autowired
 	private CadastroAgendaService cadastroAgendaService;
 	
 	@RequestMapping("/novo")
@@ -68,18 +65,15 @@ public class AgendaController {
 	
 	@RequestMapping
 	public ModelAndView pesquisar(@ModelAttribute("filtro") AgendaFilter filter) {
+		List<Agenda> todosContatos = cadastroAgendaService.filtrar(filter);
 		
-		String nome = filter.getNome() == null ? "%" : filter.getNome();
-		List<Agenda> todosContatos = agendaRepositoty.findByNomeContaining(nome); 
-		// lista de titulos
 		ModelAndView mv = new ModelAndView("PesquisaContato");
 		mv.addObject("contatos", todosContatos);
 		return mv;
 	}
 	
 	@RequestMapping("{codigo}")
-	public ModelAndView edicaor(@PathVariable Long codigo){
-		Agenda agenda = agendaRepositoty.findOne(codigo);
+	public ModelAndView edicaor(@PathVariable("codigo") Agenda agenda){
 		
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(agenda);
@@ -88,7 +82,7 @@ public class AgendaController {
 	
 	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
-		agendaRepositoty.delete(codigo);
+		cadastroAgendaService.excluir(codigo);
 		
 		attributes.addFlashAttribute("mensagem", "Contato excluído com sucesso!");
 		return "redirect:/agendas";
