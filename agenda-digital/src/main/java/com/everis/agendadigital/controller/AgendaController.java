@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,6 +20,8 @@ import com.everis.agendadigital.model.Agenda;
 import com.everis.agendadigital.model.Estados;
 import com.everis.agendadigital.model.TipoLogradouro;
 import com.everis.agendadigital.repository.AgendaRepositoty;
+import com.everis.agendadigital.repository.filter.AgendaFilter;
+import com.everis.agendadigital.service.CadastroAgendaService;
 
 @Controller
 @RequestMapping("/agendas")
@@ -26,8 +29,12 @@ public class AgendaController {
 	//para log Debug (logging.level.root=DEBUG)
 	
 	private static final String CADASTRO_VIEW = "CadastroAgenda";
+	
 	@Autowired
 	private AgendaRepositoty agendaRepositoty;
+	
+	@Autowired
+	private CadastroAgendaService cadastroAgendaService;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(){
@@ -46,7 +53,7 @@ public class AgendaController {
 		if(erros.hasErrors()){
 			return "CadastroAgenda";
 		}
-		agendaRepositoty.save(agenda);
+		cadastroAgendaService.salvar(agenda);
 		attributes.addFlashAttribute("mensagem", "Agenda salva com sucesso!");
 		return "redirect:/agendas/novo";
 	}
@@ -59,13 +66,11 @@ public class AgendaController {
 		return Arrays.asList(TipoLogradouro.values());
 	}
 	
-	
-	// Metodo para listar todos os títulos, já está mapeado no início da classe
-	// como ("/titulos")
 	@RequestMapping
-	public ModelAndView pesquisar(Pageable pageable) {
-		List<Agenda> todosContatos = agendaRepositoty.findAll(); // FindAll
-																// retorna a
+	public ModelAndView pesquisar(@ModelAttribute("filtro") AgendaFilter filter) {
+		
+		String nome = filter.getNome() == null ? "%" : filter.getNome();
+		List<Agenda> todosContatos = agendaRepositoty.findByNomeContaining(nome); 
 		// lista de titulos
 		ModelAndView mv = new ModelAndView("PesquisaContato");
 		mv.addObject("contatos", todosContatos);
