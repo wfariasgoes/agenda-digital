@@ -7,6 +7,8 @@
 <title>Pesquisa na Agenda</title>
 </head>
 <section layout:fragment="content">
+	<div layout:include="/padrao/MensagemGeral"></div>
+	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
@@ -52,7 +54,7 @@
 								</span>
 							</a>
 							 <a class="btn btn-link btn-xs" data-toggle="modal"	data-target="#confirmacaoExclusaoModal"
-								th:attr="data-codigo=${agenda.codigo},data-nome=${agenda.nome}"
+								th:attr="data-codigo=${agenda.codigo},data-nome=${agenda.nome}" 
 								title="Excluir" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</a>
@@ -65,6 +67,7 @@
 				</tbody>
 			</table>
 		</div>
+	   	<div layout:include="/padrao/DialogoConfirmacaoExclusao"></div>
 	</div>
 </section>
 </html>

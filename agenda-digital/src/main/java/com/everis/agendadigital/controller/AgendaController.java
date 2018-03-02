@@ -81,6 +81,14 @@ public class AgendaController {
 		return mv;
 	}
 	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		agendaRepositoty.delete(codigo);
+		
+		attributes.addFlashAttribute("mensagem", "Contato excluído com sucesso!");
+		return "redirect:/agendas";
+	}
+	
 	/**
 	 * Carrega dinamicamente o combo estados e recarrega após salvar
 	 * **/

@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -42,6 +43,7 @@ public class Agenda {
 	private String logradouro;
 	
 	@NotEmpty(message = "Serviços é obrigatório")
+	@Size(max = 15, message = "A descrição do serviço não pode conter mais de 15 caracteres")
 	private String servico;
 	
 	private String complemento;
